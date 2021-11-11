@@ -1,0 +1,45 @@
+C:\Users\Doruk\Desktop\C# work\C# drawing\bin\Debug\net6.0\C# drawing.exe
+C:\Users\Doruk\Desktop\C# work\C# drawing\bin\Debug\net6.0\C# drawing.deps.json
+C:\Users\Doruk\Desktop\C# work\C# drawing\bin\Debug\net6.0\C# drawing.runtimeconfig.json
+C:\Users\Doruk\Desktop\C# work\C# drawing\bin\Debug\net6.0\C# drawing.dll
+C:\Users\Doruk\Desktop\C# work\C# drawing\bin\Debug\net6.0\ref\C# drawing.dll
+C:\Users\Doruk\Desktop\C# work\C# drawing\bin\Debug\net6.0\C# drawing.pdb
+C:\Users\Doruk\Desktop\C# work\C# drawing\obj\Debug\net6.0\C# drawing.csproj.AssemblyReference.cache
+C:\Users\Doruk\Desktop\C# work\C# drawing\obj\Debug\net6.0\C# drawing.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Doruk\Desktop\C# work\C# drawing\obj\Debug\net6.0\C# drawing.AssemblyInfoInputs.cache
+C:\Users\Doruk\Desktop\C# work\C# drawing\obj\Debug\net6.0\C# drawing.AssemblyInfo.cs
+C:\Users\Doruk\Desktop\C# work\C# drawing\obj\Debug\net6.0\C# drawing.csproj.CoreCompileInputs.cache
+C:\Users\Doruk\Desktop\C# work\C# drawing\obj\Debug\net6.0\C# drawing.dll
+C:\Users\Doruk\Desktop\C# work\C# drawing\obj\Debug\net6.0\ref\C# drawing.dll
+C:\Users\Doruk\Desktop\C# work\C# drawing\obj\Debug\net6.0\C# drawing.pdb
+C:\Users\Doruk\Desktop\C# work\C# drawing\obj\Debug\net6.0\C# drawing.genruntimeconfig.cache
+C:\Users\Doruk\Desktop\C# work\ASCIISharp\bin\Debug\net6.0\C# drawing.exe
+C:\Users\Doruk\Desktop\C# work\ASCIISharp\bin\Debug\net6.0\C# drawing.deps.json
+C:\Users\Doruk\Desktop\C# work\ASCIISharp\bin\Debug\net6.0\C# drawing.runtimeconfig.json
+C:\Users\Doruk\Desktop\C# work\ASCIISharp\bin\Debug\net6.0\C# drawing.dll
+C:\Users\Doruk\Desktop\C# work\ASCIISharp\bin\Debug\net6.0\ref\C# drawing.dll
+C:\Users\Doruk\Desktop\C# work\ASCIISharp\bin\Debug\net6.0\C# drawing.pdb
+C:\Users\Doruk\Desktop\C# work\ASCIISharp\obj\Debug\net6.0\C# drawing.csproj.AssemblyReference.cache
+C:\Users\Doruk\Desktop\C# work\ASCIISharp\obj\Debug\net6.0\C# drawing.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Doruk\Desktop\C# work\ASCIISharp\obj\Debug\net6.0\C# drawing.AssemblyInfoInputs.cache
+C:\Users\Doruk\Desktop\C# work\ASCIISharp\obj\Debug\net6.0\C# drawing.AssemblyInfo.cs
+C:\Users\Doruk\Desktop\C# work\ASCIISharp\obj\Debug\net6.0\C# drawing.csproj.CoreCompileInputs.cache
+C:\Users\Doruk\Desktop\C# work\ASCIISharp\obj\Debug\net6.0\C# drawing.dll
+C:\Users\Doruk\Desktop\C# work\ASCIISharp\obj\Debug\net6.0\ref\C# drawing.dll
+C:\Users\Doruk\Desktop\C# work\ASCIISharp\obj\Debug\net6.0\C# drawing.pdb
+C:\Users\Doruk\Desktop\C# work\ASCIISharp\obj\Debug\net6.0\C# drawing.genruntimeconfig.cache
+C:\Users\Doruk\Desktop\ASCIISharp\bin\Debug\net6.0\C# drawing.exe
+C:\Users\Doruk\Desktop\ASCIISharp\bin\Debug\net6.0\C# drawing.deps.json
+C:\Users\Doruk\Desktop\ASCIISharp\bin\Debug\net6.0\C# drawing.runtimeconfig.json
+C:\Users\Doruk\Desktop\ASCIISharp\bin\Debug\net6.0\C# drawing.dll
+C:\Users\Doruk\Desktop\ASCIISharp\bin\Debug\net6.0\ref\C# drawing.dll
+C:\Users\Doruk\Desktop\ASCIISharp\bin\Debug\net6.0\C# drawing.pdb
+C:\Users\Doruk\Desktop\ASCIISharp\obj\Debug\net6.0\C# drawing.csproj.AssemblyReference.cache
+C:\Users\Doruk\Desktop\ASCIISharp\obj\Debug\net6.0\C# drawing.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Doruk\Desktop\ASCIISharp\obj\Debug\net6.0\C# drawing.AssemblyInfoInputs.cache
+C:\Users\Doruk\Desktop\ASCIISharp\obj\Debug\net6.0\C# drawing.AssemblyInfo.cs
+C:\Users\Doruk\Desktop\ASCIISharp\obj\Debug\net6.0\C# drawing.csproj.CoreCompileInputs.cache
+C:\Users\Doruk\Desktop\ASCIISharp\obj\Debug\net6.0\C# drawing.dll
+C:\Users\Doruk\Desktop\ASCIISharp\obj\Debug\net6.0\ref\C# drawing.dll
+C:\Users\Doruk\Desktop\ASCIISharp\obj\Debug\net6.0\C# drawing.pdb
+C:\Users\Doruk\Desktop\ASCIISharp\obj\Debug\net6.0\C# drawing.genruntimeconfig.cache
