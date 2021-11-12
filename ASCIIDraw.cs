@@ -13,7 +13,7 @@ namespace ASCIIDraw{
     class Screen{
         public Screen(int Width,int Height, int[] Foreground){
             {//NEVER LOOK HERE DW ABOUT THIS 
-                var handle = kernel32.GetStdHandle(-11);int mode;kernel32.GetConsoleMode( handle, out mode );kernel32.SetConsoleMode( handle, mode | 0x4 );}
+            var handle = kernel32.GetStdHandle(-11);int mode;kernel32.GetConsoleMode( handle, out mode );kernel32.SetConsoleMode( handle, mode | 0x4 );}
             ScreenWidth = Width;
             ScreenHeight = Height;
             DefaultForeground = Foreground;
@@ -22,10 +22,8 @@ namespace ASCIIDraw{
         public int ScreenHeight{get;}
         public int[] DefaultForeground = new int[3];
         public List<Shape> Queue = new List<Shape>();
-
-        public void WriteColor(string Value,int[] Color){
-            kernel32.OutputDebugString($"\x1b[38;2;{Color[0]};{Color[1]};{Color[2]}m{Value}");
-        }
+        private string CurrentLine = "";
+        private string CurrentFrame = "";
         public void Render(){
             /*
             There is a Render Queue that code checks here. 
@@ -40,21 +38,35 @@ namespace ASCIIDraw{
                 foreach(Shape shp in Queue){
                    result = shp.RenderCheck(x,y)==true?shp.ShapeColor:result; //check render queue here and draw colour
                 }
-                WriteColor("█",result);
+                LoadToLine("██",result);
             }
-
-            Console.WriteLine();
+            LoadLineToFrame();
             }
+            WriteFrame();
         }
+        private void LoadToLine(string Value,int[] Color){
+            CurrentLine+=$"\x1b[38;2;{Color[0]};{Color[1]};{Color[2]}m{Value}";
+        }
+
+        private void LoadLineToFrame(){
+            CurrentFrame+=CurrentLine+"\n";
+            CurrentLine="";
+        }
+        private void WriteFrame(){
+            Console.WriteLine(CurrentFrame);
+            CurrentFrame = "";
+        }
+
         public void ClearScene(){
             /* Clear screen */
-         Console.Clear();
+        Console.Clear();
         for(int y=0;y<ScreenHeight;y++){
         for(int x=0;x<ScreenWidth;x++){
-            WriteColor("#",DefaultForeground);
+            LoadToLine("██",DefaultForeground);
         }
-        Console.WriteLine();
+        LoadLineToFrame();
         }
+        WriteFrame();
     }
     }
 
@@ -130,7 +142,5 @@ namespace ASCIIDraw{
        public static extern bool GetConsoleMode( IntPtr handle, out int mode );
        [DllImport( "kernel32.dll", SetLastError = true )]
        public static extern IntPtr GetStdHandle( int handle );
-       [DllImport("kernel32.dll")]
-       public static extern void OutputDebugString(string lpOutputString);
     }
 }
