@@ -9,16 +9,18 @@ namespace C_Drawing{
             int[] G = new int[]{0,128,255,255,0,0};
             int[] B = new int[]{0,0,0,0,255,255};
             
+
             /*  
             for(int i=0;i<6;i++){  //pride flag - demo 2
                 playground.Queue.Add(new Rectangle(new int[]{0,i%6*7},new int[]{120,42-(i%6*7)},new int[]{R[i%6],G[i%6],B[i%6]}));
             }
-            
+            playground.Render();
+
             for(int i=0;i<36;i++){ // pride rings - demo 1
                 playground.Queue.Add(new Ring(new int[]{(i*3)-6,(i%6)*2},10,new int[]{R[i%6],G[i%6],B[i%6]},4));
             }
-            */
-            while(true==true){
+
+            while(true==true){ // animation - demo 3
                 for(int i=1;i<30;i++){
                 Thread.Sleep(1);
                 playground.Queue.Add(new Ring(new int[]{0,0},i,new int[]{180,0,180},i));
@@ -26,6 +28,11 @@ namespace C_Drawing{
                 playground.Queue.Clear();
                 }
             }
+           */
+            playground.Queue.Add(new Circle(new int[]{10,10},10,new int[]{255,0,255}));
+            playground.Queue.Add(new Circle(new int[]{10,10},9,new int[]{255,255,0}));
+            playground.Queue.Add(new Circle(new int[]{10,10},8,new int[]{0,255,0}));
+            playground.Render();
         }
     }
 }

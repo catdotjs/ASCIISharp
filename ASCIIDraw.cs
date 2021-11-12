@@ -23,6 +23,9 @@ namespace ASCIIDraw{
         public int[] DefaultForeground = new int[3];
         public List<Shape> Queue = new List<Shape>();
 
+        public void WriteColor(string Value,int[] Color){
+            kernel32.OutputDebugString($"\x1b[38;2;{Color[0]};{Color[1]};{Color[2]}m{Value}");
+        }
         public void Render(){
             /*
             There is a Render Queue that code checks here. 
@@ -37,16 +40,24 @@ namespace ASCIIDraw{
                 foreach(Shape shp in Queue){
                    result = shp.RenderCheck(x,y)==true?shp.ShapeColor:result; //check render queue here and draw colour
                 }
-                WriteColor("#",result);
+                WriteColor("█",result);
             }
 
             Console.WriteLine();
             }
         }
-        public void WriteColor(string Value,int[] Color){
-            Console.Write($"\x1b[38;2;{Color[0]};{Color[1]};{Color[2]}m{Value}");
+        public void ClearScene(){
+            /* Clear screen */
+         Console.Clear();
+        for(int y=0;y<ScreenHeight;y++){
+        for(int x=0;x<ScreenWidth;x++){
+            WriteColor("#",DefaultForeground);
+        }
+        Console.WriteLine();
         }
     }
+    }
+
     /* Shapes*/
     class Ring : Shape{
         public Ring(int[] xy,int Radius,int[] Color,int OutlineSize=1){
@@ -61,6 +72,20 @@ namespace ASCIIDraw{
         public override bool RenderCheck(int xx,int yy){
             int result = (int)(Math.Pow((xx-x)-r,2)+Math.Pow((yy-y)-r,2));
             return r<result==r*o>result;
+        }
+    }
+
+    class Circle : Shape{
+        public Circle(int[] xy,int Radius,int[] Color){
+            x = xy[0];
+            y = xy[1];
+            r = Radius;
+            ShapeColor = Color;
+        }
+        public int r {get; set;} //radius
+        public override bool RenderCheck(int xx,int yy){
+            int result = (int)(Math.Pow(xx-x,2)+Math.Pow(yy-y,2));
+            return result<=Math.Pow(r,2);
         }
     }
 
@@ -105,6 +130,7 @@ namespace ASCIIDraw{
        public static extern bool GetConsoleMode( IntPtr handle, out int mode );
        [DllImport( "kernel32.dll", SetLastError = true )]
        public static extern IntPtr GetStdHandle( int handle );
-       
+       [DllImport("kernel32.dll")]
+       public static extern void OutputDebugString(string lpOutputString);
     }
 }
