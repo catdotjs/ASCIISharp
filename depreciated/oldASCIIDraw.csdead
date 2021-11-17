@@ -1,9 +1,7 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.InteropServices;
 
-namespace ASCIIDraw{
+namespace oldASCIIDrawv1{
     /* Structs */
     public struct Color{
         public int R,G,B;
@@ -14,28 +12,21 @@ namespace ASCIIDraw{
             G = (Hex>>8) - (R<<8);
             B = Hex - ((Hex>>8)<<8);
         }
-        public Color(int Red,int Green,int Blue){
-            HexVal = (Red<<16)+(Green<<8)+Blue;
-            R = Red;
-            G = Green;
-            B = Blue;
-        }
         public override string ToString() => $"#{HexVal.ToString("X")}"; 
-        public static implicit operator Color(int Hex) => new Color(Hex);
     }
 
     /* Abstract Classes*/
     abstract class Shape{
-        public int x,y; //position x and y
+        public int x {get; set;} //position x
+        public int y {get; set;} //position y
         public Color ShapeColor = new Color(0xFFFFFF); //Shape Color
         public abstract bool RenderCheck(int xx,int yy);
     }
-
-    /* new Scene render*/
-    class Scene{
-        public Scene(int Width,int Height, Color Foreground){
+    /* Screen */
+    class Screen{
+        public Screen(int Width,int Height, int[] Foreground){
             {//NEVER LOOK HERE DW ABOUT THIS 
-            var handle = kernel32.GetStdHandle(-11);int mode;kernel32.GetConsoleMode( handle, out mode );kernel32.SetConsoleMode( handle, mode | 0x4 );Console.CursorVisible=false;}
+            var handle = kernel32.GetStdHandle(-11);int mode;kernel32.GetConsoleMode( handle, out mode );kernel32.SetConsoleMode( handle, mode | 0x4 );}
             ScreenWidth = Width;
             ScreenHeight = Height;
             DefaultForeground = Foreground;
@@ -44,33 +35,55 @@ namespace ASCIIDraw{
         public int ScreenHeight{get;}
         public Color DefaultForeground = new Color(0xFFFFFF);
         public List<Shape> Queue = new List<Shape>();
+        private string CurrentLine = "";
         private string CurrentFrame = "";
-
-        public void RenderFrame(){
-            Console.SetCursorPosition(0,0);
-            Color CurrentColor; 
-
-            //The big loop
-            for(int i=0;i<(ScreenHeight*ScreenWidth);i++){
-                // Coords
-                int x = i%ScreenWidth;
-                int y = i/ScreenWidth;
-                //End  Line
-                CurrentFrame+=(x==0)&(i!=0)?"\n":"";
-                //Check Shapes
-                try{CurrentColor = Queue.FirstOrDefault(shp => shp.RenderCheck(x,y)).ShapeColor;
-                }catch{CurrentColor = DefaultForeground;}
-                LoadToLine("██",CurrentColor);
+        public void Render(){
+            /*
+            There is a Render Queue that code checks here. 
+            There is currently no Z-depth. last one to get calculate
+            has highest Z-depth ¯\_(ツ)_/¯
+            */
+            
+            Console.Clear();
+            for(int y=0;y<ScreenHeight;y++){
+            for(int x=0;x<ScreenWidth;x++){
+                Color result = DefaultForeground;
+                foreach(Shape shp in Queue){
+                   result = shp.RenderCheck(x,y)==true?shp.ShapeColor:result; //check render queue here and draw colour
+                }
+                LoadToLine("██",result);
             }
-            Console.Write(CurrentFrame);
-            CurrentFrame="";
+            LoadLineToFrame();
+            }
+            WriteFrame();
         }
-        private void LoadToLine(string Value,Color Color){
-            CurrentFrame+=$"\x1b[38;2;{Color.R};{Color.G};{Color.B}m{Value}";
+        private void LoadToLine(string Value,int[] Color){
+            CurrentLine+=$"\x1b[38;2;{Color[0]};{Color[1]};{Color[2]}m{Value}";
         }
+
+        private void LoadLineToFrame(){
+            CurrentFrame+=CurrentLine+"\n";
+            CurrentLine="";
+        }
+        private void WriteFrame(){
+            Console.WriteLine(CurrentFrame);
+            CurrentFrame = "";
+        }
+
+        public void ClearScene(){
+            /* Clear screen */
+        Console.Clear();
+        for(int y=0;y<ScreenHeight;y++){
+        for(int x=0;x<ScreenWidth;x++){
+            LoadToLine("██",DefaultForeground);
+        }
+        LoadLineToFrame();
+        }
+        WriteFrame();
+    }
     }
 
-    /* Shapes and such*/
+    /* Shapes*/
     class Ring : Shape{
         public Ring(int[] xy,int Radius,Color Color,int OutlineSize=1){
             x = xy[0];
@@ -79,7 +92,8 @@ namespace ASCIIDraw{
             o = OutlineSize;
             ShapeColor = Color;
         }
-        public int r, o; //radius and outline size
+        public int r {get; set;} //radius
+        public int o {get; set;} //outline size
         public override bool RenderCheck(int xx,int yy){
             int result = (int)(Math.Pow((xx-x)-r,2)+Math.Pow((yy-y)-r,2));
             return r<result==r*o>result;
@@ -93,7 +107,7 @@ namespace ASCIIDraw{
             r = Radius;
             ShapeColor = Color;
         }
-        public int r;//radius
+        public int r {get; set;} //radius
         public override bool RenderCheck(int xx,int yy){
             int result = (int)(Math.Pow(xx-x,2)+Math.Pow(yy-y,2));
             return result<=Math.Pow(r,2);
@@ -109,8 +123,9 @@ namespace ASCIIDraw{
             ShapeColor = Color;
             Outline = isOutline;
         }
-        public int Width,Height;
-        public bool Outline;
+        public int Width{get; set;}
+        public int Height{get; set;}
+        public bool Outline{get; set;}
         public override bool RenderCheck(int xx,int yy){
             if(!Outline){
                 return (xx>=x&&xx<=x+Width)&&(yy>=y&&yy<=y+Height); // bigger than x but smaller than x+width OR bigger than y but smaller than y+height
@@ -129,7 +144,7 @@ namespace ASCIIDraw{
         public override bool RenderCheck(int xx,int yy){
             return (xx==x&&yy==y);
         }
-    }
+        }
 
     /* Colour stuff */
     static class kernel32{
