@@ -33,17 +33,21 @@ namespace ASCIIDraw{
 
     /* new Scene render*/
     class Scene{
-        public Scene(int Width,int Height, Color Foreground){
+        public Scene(int Width,int Height, Color Foreground,string Symbol="██"){
             {//NEVER LOOK HERE DW ABOUT THIS 
             var handle = kernel32.GetStdHandle(-11);int mode;kernel32.GetConsoleMode( handle, out mode );kernel32.SetConsoleMode( handle, mode | 0x4 );Console.CursorVisible=false;}
             ScreenWidth = Width;
             ScreenHeight = Height;
             DefaultForeground = Foreground;
+            Symb = Symbol;
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
+            Console.Write("\xfeff"); // bom = byte order mark
         }
         public int ScreenWidth{get;}
         public int ScreenHeight{get;}
         public Color DefaultForeground = new Color(0xFFFFFF);
         public List<Shape> Queue = new List<Shape>();
+        public string Symb;
         private string CurrentFrame = "";
 
         public void RenderFrame(){
@@ -60,7 +64,7 @@ namespace ASCIIDraw{
                 //Check Shapes
                 try{CurrentColor = Queue.FirstOrDefault(shp => shp.RenderCheck(x,y)).ShapeColor;
                 }catch{CurrentColor = DefaultForeground;}
-                LoadToLine("██",CurrentColor);
+                LoadToLine(Symb,CurrentColor);
             }
             Console.Write(CurrentFrame);
             CurrentFrame="";

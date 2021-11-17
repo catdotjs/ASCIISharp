@@ -5,15 +5,15 @@ using System.Dynamic;
 namespace C_Drawing{
     class Program{
        public static void Main(string[] Args){
-            Scene playground = new Scene(60,42,new Color(1,36,86));
-            
-            /*
+            Scene playground = new Scene(40,42,new Color(1,36,86)); //1,36,86
+            playground.RenderFrame();
+
             // new Demo 2 - Bouncin Ball(s)
             Console.Clear();
             while(true){
-                playground.Queue.Add(new Rectangle(new int[]{0,38},new int[]{60,4},new Color(0xFFFFFF)));
-                playground.Queue.Add(new Rectangle(new int[]{0,0},new int[]{60,3},new Color(0xFFFFFF)));
-                playground.Queue.Add(new Circle(new int[]{30,9},6,new Color(0xAF00F8)));
+                playground.Queue.Add(new Rectangle(new int[]{0,38},new int[]{playground.ScreenWidth,4},new Color(0xFFFFFF)));
+                playground.Queue.Add(new Rectangle(new int[]{0,0},new int[]{playground.ScreenWidth,3},new Color(0xFFFFFF)));
+                playground.Queue.Add(new Circle(new int[]{playground.ScreenWidth/2,9},6,new Color(0xAF00F8)));
                 for(int i=0;i<23;i++){
                     playground.Queue[2].y++;
                     playground.RenderFrame();
@@ -24,7 +24,6 @@ namespace C_Drawing{
                 }
                 playground.Queue.Clear();
             }
-            */
             /*
             //new Demo 1 - Prider Flag
             Color[] Colors = new Color[]{0xFF0000,0xFF8000,0xFFFF00,0x00FF00,0x0000FF,0xFF00FF};
