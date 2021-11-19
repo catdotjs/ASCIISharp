@@ -1,23 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Doruk\\Desktop\\github\\ASCIISharp\\C# drawing.csproj": {}
+    "C:\\Users\\Doruk\\Desktop\\ASCIISharp\\C# drawing.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Doruk\\Desktop\\github\\ASCIISharp\\C# drawing.csproj": {
+    "C:\\Users\\Doruk\\Desktop\\ASCIISharp\\C# drawing.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Doruk\\Desktop\\github\\ASCIISharp\\C# drawing.csproj",
+        "projectUniqueName": "C:\\Users\\Doruk\\Desktop\\ASCIISharp\\C# drawing.csproj",
         "projectName": "C# drawing",
-        "projectPath": "C:\\Users\\Doruk\\Desktop\\github\\ASCIISharp\\C# drawing.csproj",
+        "projectPath": "C:\\Users\\Doruk\\Desktop\\ASCIISharp\\C# drawing.csproj",
         "packagesPath": "C:\\Users\\Doruk\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Doruk\\Desktop\\github\\ASCIISharp\\obj\\",
+        "outputPath": "C:\\Users\\Doruk\\Desktop\\ASCIISharp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
           "C:\\Users\\Doruk\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -25,8 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://packages.stride3d.net/nuget": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {

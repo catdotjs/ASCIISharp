@@ -46,7 +46,7 @@ namespace ASCIIDraw{
         public List<Shape> Queue = new List<Shape>();
         private string CurrentFrame = "";
 
-        public void RenderFrame(){
+        public void RenderFrame(object DebugInfo){
             Console.SetCursorPosition(0,0);
             Color CurrentColor; 
 
@@ -62,7 +62,7 @@ namespace ASCIIDraw{
                 }catch{CurrentColor = DefaultForeground;}
                 LoadToLine("██",CurrentColor);
             }
-            Console.Write(CurrentFrame);
+            Console.Write(CurrentFrame+"\n"+DebugInfo);
             CurrentFrame="";
         }
         private void LoadToLine(string Value,Color Color){

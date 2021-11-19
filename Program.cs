@@ -5,26 +5,27 @@ using System.Dynamic;
 namespace C_Drawing{
     class Program{
        public static void Main(string[] Args){
-            Scene playground = new Scene(60,42,new Color(1,36,86));
+            Scene playground = new Scene(78 ,42,new Color(160,36,86));
             
-            /*
+            
             // new Demo 2 - Bouncin Ball(s)
             Console.Clear();
+            playground.Queue.Add(new Rectangle(new int[]{0,38},new int[]{playground.ScreenWidth,4},new Color(0xFFFFFF)));
+            playground.Queue.Add(new Rectangle(new int[]{0,0},new int[]{playground.ScreenWidth,2},new Color(0xFFFFFF)));
+            playground.Queue.Add(new Circle(new int[]{0,9},6,new Color(0xAF00F8)));
+            int y2 = 0;
             while(true){
-                playground.Queue.Add(new Rectangle(new int[]{0,38},new int[]{60,4},new Color(0xFFFFFF)));
-                playground.Queue.Add(new Rectangle(new int[]{0,0},new int[]{60,3},new Color(0xFFFFFF)));
-                playground.Queue.Add(new Circle(new int[]{30,9},6,new Color(0xAF00F8)));
-                for(int i=0;i<23;i++){
-                    playground.Queue[2].y++;
-                    playground.RenderFrame();
+                int yy = playground.Queue[2].y;
+                int xx = playground.Queue[2].x;
+                y2++;
+                playground.Queue[2].y+=(y2%48)<24?1:-1;
+                playground.Queue[2].x++;
+                playground.RenderFrame($"{xx},{yy}");
+                if(xx>playground.ScreenWidth){
+                playground.Queue[2].x=0;
                 }
-                for(int i=0;i<23;i++){
-                    playground.Queue[2].y--;
-                    playground.RenderFrame();
-                }
-                playground.Queue.Clear();
             }
-            */
+            /**/
             /*
             //new Demo 1 - Prider Flag
             Color[] Colors = new Color[]{0xFF0000,0xFF8000,0xFFFF00,0x00FF00,0x0000FF,0xFF00FF};
